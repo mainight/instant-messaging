@@ -116,7 +116,9 @@ public class LaunchActivity extends BaseActivity {
         // 权限检测，跳转
         if (PermissionsFragment.haveAll(this, getSupportFragmentManager())) {
             if (Account.isLogin()) {
-                MainActivity.show(this);
+               // AccountActivity.show(this);
+                //登录后就不在登录
+               MainActivity.show(this);
             } else {
                 AccountActivity.show(this);
             }

@@ -16,7 +16,8 @@
         android:id="@+id/im_portrait"
         android:layout_width="@dimen/portraitSize"
         android:layout_height="@dimen/portraitSize"
-        android:layout_gravity="start|center_vertical" />
+        android:layout_gravity="start|center_vertical"
+        android:src="@drawable/default_po"/>
 
     <TextView
         android:id="@+id/txt_name"

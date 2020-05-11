@@ -139,6 +139,7 @@ public class PersonalActivity extends PresenterToolbarActivity<PersonalContract.
     public void onLoadDone(User user) {
         if (user == null)
             return;
+        //个人头像
         mPortrait.setup(Glide.with(this), user);
         mName.setText(user.getName());
         mDesc.setText(user.getDesc());
