@@ -12,7 +12,7 @@ import net.qiujuer.genius.kit.handler.runable.Action;
  * Crete by Anding on 2020-03-02
  */
 public class FollowPresenter extends BasePresenter<FollowContract.View>
-        implements FollowContract.Presenter , DataSource.CallBack<UserCard> {
+        implements FollowContract.Presenter , DataSource.Callback<UserCard> {
 
     public FollowPresenter(FollowContract.View view) {
         super(view);

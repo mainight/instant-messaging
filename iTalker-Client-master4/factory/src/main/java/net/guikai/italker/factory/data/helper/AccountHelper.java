@@ -30,7 +30,7 @@ public class AccountHelper {
      * @param model  传递一个注册的Model进来
      * @param callBack  成功与失败的接口回送
      */
-    public static void register(final RegisterModel model, final DataSource.CallBack<User> callBack) {
+    public static void register(final RegisterModel model, final DataSource.Callback<User> callBack) {
         // 调用Retrofit对我们的网络请求接口做代理
         RemoteService service = Network.remote();
         // 得到一个Call
@@ -58,7 +58,7 @@ public class AccountHelper {
      * @param model    登录的Model
      * @param callback 成功与失败的接口回送
      */
-    public static void login(final LoginModel model, final DataSource.CallBack<User> callback) {
+    public static void login(final LoginModel model, final DataSource.Callback<User> callback) {
         // 调用Retrofit对我们的网络请求接口做代理
         RemoteService service = Network.remote();
         // 得到一个Call
@@ -72,7 +72,7 @@ public class AccountHelper {
      *
      * @param callback Callback
      */
-    public static void bindPush(final DataSource.CallBack<User> callback) {
+    public static void bindPush(final DataSource.Callback<User> callback) {
         // 检查是否为空
         String pushId = Account.getPushId();
         if (TextUtils.isEmpty(pushId))
@@ -88,9 +88,9 @@ public class AccountHelper {
      */
     public static class AccountRspCallback implements Callback<RspModel<AccountRspModel>> {
 
-        final DataSource.CallBack<User> callback;
+        final DataSource.Callback<User> callback;
 
-        AccountRspCallback(DataSource.CallBack<User> callBack) {
+        AccountRspCallback(DataSource.Callback<User> callBack) {
             this.callback = callBack;
         }
 

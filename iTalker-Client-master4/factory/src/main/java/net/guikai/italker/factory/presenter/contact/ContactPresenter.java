@@ -1,5 +1,4 @@
 package net.guikai.italker.factory.presenter.contact;
-
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 
@@ -29,7 +28,7 @@ import java.util.List;
  * Crete by Anding on 2020-03-02
  */
 public class ContactPresenter extends BasePresenter<ContactContract.View>
-        implements ContactContract.Presenter {
+        implements ContactContract.Presenter, DataSource.SucceedCallback<List<User>> {
     public ContactPresenter(ContactContract.View view) {
         super(view);
     }
@@ -56,7 +55,7 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
                 })
                 .execute();
 
-        UserHelper.refreshContacts(new DataSource.CallBack<List<UserCard>>() {
+        UserHelper.refreshContacts(new DataSource.Callback<List<UserCard>>() {
             @Override
             public void onDataNotAvailable(int strRes) {
 
@@ -108,6 +107,11 @@ public class ContactPresenter extends BasePresenter<ContactContract.View>
         // 刷新界面
         result.dispatchUpdatesTo(getView().getRecyclerAdapter() );
         getView().onAdapterDataChanged();
+
+    }
+
+    @Override
+    public void onDataLoaded(List<User> users) {
 
     }
 }

@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import net.guikai.italker.common.R;
-import net.guikai.italker.common.widget.recycler.BaseRecyclerAdapter;
+import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -61,9 +61,9 @@ public class GalleryView extends RecyclerView {
     private void init() {
         setLayoutManager(new GridLayoutManager(getContext(), 4));
         setAdapter(mAdapter);
-        mAdapter.setListener(new BaseRecyclerAdapter.AdapterListenerImpl<Image>() {
+        mAdapter.setListener(new RecyclerAdapter.AdapterListenerImpl<Image>() {
             @Override
-            public void onItemClick(BaseRecyclerAdapter.ViewHolder holder, Image image) {
+            public void onItemClick(RecyclerAdapter.ViewHolder holder, Image image) {
                 // Cell点击操作，如果说我们的点击是允许的，那么更新对应的Cell的状态
                 // 然后更新界面，同理；如果说不能允许点击（已经达到最大的选中数量）那么就不刷新界面
                 if (onItemSelectClick(image)) {
@@ -279,7 +279,7 @@ public class GalleryView extends RecyclerView {
     /**
      * 适配器
      */
-    private class Adapter extends BaseRecyclerAdapter<Image> {
+    private class Adapter extends RecyclerAdapter<Image> {
 
         @Override
         protected int getItemViewType(int position, Image image) {
@@ -295,7 +295,7 @@ public class GalleryView extends RecyclerView {
     /**
      * Cell 对应的Holder
      */
-    private class ViewHolder extends BaseRecyclerAdapter.ViewHolder<Image> {
+    private class ViewHolder extends RecyclerAdapter.ViewHolder<Image> {
         private ImageView mPic;
         private View mShade;
         private CheckBox mSelected;

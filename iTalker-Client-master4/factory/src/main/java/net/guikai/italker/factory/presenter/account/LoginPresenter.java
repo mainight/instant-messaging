@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * Crete by Anding on 2019-12-23
  */
 public class LoginPresenter extends BasePresenter<LoginContract.View>
-        implements LoginContract.Presenter, DataSource.CallBack<User> {
+        implements LoginContract.Presenter, DataSource.Callback<User> {
 
     private final LoginContract.View view = getView();
 

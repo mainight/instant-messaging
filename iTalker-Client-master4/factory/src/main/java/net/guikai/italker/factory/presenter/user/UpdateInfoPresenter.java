@@ -19,7 +19,7 @@ import net.qiujuer.genius.kit.handler.runable.Action;
  * Crete by Anding on 2020-02-20
  */
 public class UpdateInfoPresenter extends BasePresenter<UpdateInfoContract.View>
-        implements UpdateInfoContract.Presenter , DataSource.CallBack<UserCard> {
+        implements UpdateInfoContract.Presenter , DataSource.Callback<UserCard> {
 
     final UpdateInfoContract.View view = getView();
 

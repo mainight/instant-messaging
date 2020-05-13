@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import net.guikai.italker.common.app.PresenterFragment;
 import net.guikai.italker.common.widget.EmptyView;
 import net.guikai.italker.common.widget.PortraitView;
-import net.guikai.italker.common.widget.recycler.BaseRecyclerAdapter;
+import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
 import net.guikai.italker.factory.model.card.UserCard;
 import net.guikai.italker.factory.presenter.contact.FollowContract;
 import net.guikai.italker.factory.presenter.contact.FollowPresenter;
@@ -44,7 +44,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
 
-    private BaseRecyclerAdapter<UserCard> mAdapter;
+    private RecyclerAdapter<UserCard> mAdapter;
 
     @Override
     protected int getContentLayoutId() {
@@ -57,7 +57,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
 
         // 初始化Recycler
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecycler.setAdapter(mAdapter = new BaseRecyclerAdapter<UserCard>() {
+        mRecycler.setAdapter(mAdapter = new RecyclerAdapter<UserCard>() {
 
             @Override
             protected int getItemViewType(int position, UserCard userCard) {
@@ -104,7 +104,7 @@ public class SearchUserFragment extends PresenterFragment<SearchContract.Present
     /**
      * 每一个Cell的布局操作
      */
-    class ViewHolder extends BaseRecyclerAdapter.ViewHolder<UserCard>
+    class ViewHolder extends RecyclerAdapter.ViewHolder<UserCard>
     implements FollowContract.View {
 
         @BindView(R.id.im_portrait)

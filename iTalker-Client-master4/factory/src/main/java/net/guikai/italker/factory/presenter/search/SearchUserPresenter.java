@@ -16,7 +16,7 @@ import retrofit2.Call;
  * Crete by Anding on 2020-02-29
  */
 public class SearchUserPresenter extends BasePresenter<SearchContract.UserView>
-        implements SearchContract.Presenter , DataSource.CallBack<List<UserCard>>{
+        implements SearchContract.Presenter , DataSource.Callback<List<UserCard>>{
 
     private Call searchCall;
 

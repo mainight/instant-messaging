@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
  * Crete by Anding on 2020-02-15
  */
 public class RegisterPresenter extends BasePresenter<RegisterContract.View>
-        implements RegisterContract.Presenter, DataSource.CallBack<User> {
+        implements RegisterContract.Presenter, DataSource.Callback<User> {
 
     // 得到View接口
     private final RegisterContract.View view = getView();

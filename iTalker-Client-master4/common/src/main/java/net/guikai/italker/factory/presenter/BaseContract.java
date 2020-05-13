@@ -1,16 +1,17 @@
-package net.guikai.italker.common.presenter;
+package net.guikai.italker.factory.presenter;
 
 import android.support.annotation.StringRes;
 
 import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
 
 /**
- * Description: MVP模式中公共的基本契约
- * Crete by Anding on 2019-09-20
+ * MVP模式中公共的基本契约
+ *
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
 public interface BaseContract {
-
-    //基本的界面视图职责
+    // 基本的界面职责
     interface View<T extends Presenter> {
         // 公共的：显示一个字符串错误
         void showError(@StringRes int str);
@@ -24,16 +25,15 @@ public interface BaseContract {
 
     // 基本的Presenter职责
     interface Presenter {
-
-        // 公共的开始触发
+        // 共用的开始触发
         void start();
 
-        // 公共的销毁触发
+        // 共用的销毁触发
         void destroy();
     }
 
-    // 一个基本的RecyclerView的职责
-    interface RecyclerView<T extends Presenter,ViewMode> extends View<T> {
+    // 基本的一个列表的View的职责
+    interface RecyclerView<T extends Presenter, ViewMode> extends View<T> {
         // 界面端只能刷新整个数据集合，不能精确到每一条数据更新
         // void onDone(List<User> users);
 

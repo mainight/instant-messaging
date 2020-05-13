@@ -22,8 +22,8 @@ import butterknife.Unbinder;
  * Crete by Anding on 2019-09-19
  */
 @SuppressWarnings({"unchecked", "unused"})
-public abstract class BaseRecyclerAdapter<Data>
-        extends RecyclerView.Adapter<BaseRecyclerAdapter.ViewHolder<Data>>
+public abstract class RecyclerAdapter<Data>
+        extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder<Data>>
         implements View.OnClickListener, View.OnLongClickListener, AdapterCallback<Data> {
 
     private final List<Data> mDataList;
@@ -32,15 +32,15 @@ public abstract class BaseRecyclerAdapter<Data>
     /**
      * 构造函数模块
      */
-    public BaseRecyclerAdapter() {
+    public RecyclerAdapter() {
         this(null);
     }
 
-    private BaseRecyclerAdapter(AdapterListener<Data> listener) {
+    private RecyclerAdapter(AdapterListener<Data> listener) {
         this(new ArrayList<Data>(), listener);
     }
 
-    public BaseRecyclerAdapter(List<Data> mDataList, AdapterListener<Data> listener) {
+    public RecyclerAdapter(List<Data> mDataList, AdapterListener<Data> listener) {
         this.mDataList = mDataList;
         this.mListener = listener;
     }
@@ -292,10 +292,10 @@ public abstract class BaseRecyclerAdapter<Data>
      */
     public interface AdapterListener<Data> {
         //当cell点击时触发
-        void onItemClick(BaseRecyclerAdapter.ViewHolder holder, Data data);
+        void onItemClick(RecyclerAdapter.ViewHolder holder, Data data);
 
         //当Cell长按时触发
-        void onItemLongClick(BaseRecyclerAdapter.ViewHolder holder, Data data);
+        void onItemLongClick(RecyclerAdapter.ViewHolder holder, Data data);
     }
 
     /**

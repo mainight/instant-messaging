@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import net.guikai.italker.common.app.PresenterFragment;
 import net.guikai.italker.common.widget.EmptyView;
 import net.guikai.italker.common.widget.PortraitView;
-import net.guikai.italker.common.widget.recycler.BaseRecyclerAdapter;
+import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.presenter.contact.ContactContract;
 import net.guikai.italker.factory.presenter.contact.ContactPresenter;
@@ -35,7 +35,7 @@ implements ContactContract.View{
     RecyclerView mRecycler;
 
     // 适配器，User，可以直接从数据库查询数据
-    private BaseRecyclerAdapter<User> mAdapter;
+    private RecyclerAdapter<User> mAdapter;
 
 
     @Override
@@ -48,7 +48,7 @@ implements ContactContract.View{
         super.initWidget(root);
         // 初始化Recycler
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecycler.setAdapter(mAdapter = new BaseRecyclerAdapter<User>() {
+        mRecycler.setAdapter(mAdapter = new RecyclerAdapter<User>() {
 
             @Override
             protected int getItemViewType(int position, User user) {
@@ -62,9 +62,9 @@ implements ContactContract.View{
             }
         });
 
-        mAdapter.setListener(new BaseRecyclerAdapter.AdapterListenerImpl<User>() {
+        mAdapter.setListener(new RecyclerAdapter.AdapterListenerImpl<User>() {
             @Override
-            public void onItemClick(BaseRecyclerAdapter.ViewHolder holder, User user) {
+            public void onItemClick(RecyclerAdapter.ViewHolder holder, User user) {
                 // TODO 跳转到聊天界面
 
             }
@@ -76,7 +76,7 @@ implements ContactContract.View{
     }
 
     @Override
-    public BaseRecyclerAdapter<User> getRecyclerAdapter() {
+    public RecyclerAdapter<User> getRecyclerAdapter() {
         return mAdapter;
     }
 
@@ -98,7 +98,7 @@ implements ContactContract.View{
         return new ContactPresenter(this);
     }
 
-    class ViewHolder extends BaseRecyclerAdapter.ViewHolder<User> {
+    class ViewHolder extends RecyclerAdapter.ViewHolder<User> {
 
         @BindView(R.id.im_portrait)
         PortraitView mPortraitView;
