@@ -4,18 +4,24 @@ import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
 
+import net.guikai.italker.factory.data.helper.GroupHelper;
+import net.guikai.italker.factory.model.db.view.MemberUserModel;
+
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
-/**
- * Description: 群信息Model
- * Crete by Anding on 2020-02-29
- */
 
+/**
+ * 群信息Model
+ *
+ * @author guikai Email:guikai@live.cn
+ * @version 1.0.0
+ */
 @Table(database = AppDatabase.class)
-public class Group extends BaseModel {
+public class Group extends BaseDbModel<Group> implements Serializable {
     @PrimaryKey
     private String id; // 群Id
     @Column
@@ -33,6 +39,7 @@ public class Group extends BaseModel {
 
     @ForeignKey(tableClass = User.class, stubbedRelationship = true)
     private User owner;// 创建者外键
+
 
     public Object holder; // 预留字段，用于界面显示
 
@@ -123,7 +130,41 @@ public class Group extends BaseModel {
         return id != null ? id.hashCode() : 0;
     }
 
+    @Override
+    public boolean isSame(Group oldT) {
+        // 进行对比判断时，判断是否为一个群的信息，判断id即可
+        return Objects.equals(id, oldT.id);
+    }
 
+    @Override
+    public boolean isUiContentSame(Group oldT) {
+        // 如果界面显示信息有更改，只有可能是更改了：
+        // 群名称，描述，图片，以及界面显示对应的Holder
+        return Objects.equals(this.name, oldT.name)
+                && Objects.equals(this.desc, oldT.desc)
+                && Objects.equals(this.picture, oldT.picture)
+                && Objects.equals(this.holder, oldT.holder);
+    }
 
+    private long groupMemberCount = -1;
 
+    // 获取当前群的成员数量，使用内存缓存
+    public long getGroupMemberCount() {
+        if (groupMemberCount == -1) {
+            // -1 没有初始化
+            groupMemberCount = GroupHelper.getMemberCount(id);
+        }
+        return groupMemberCount;
+    }
+
+    private List<MemberUserModel> groupLatelyMembers;
+    // 获取当前群对应的成员的信息，只加载4个信息
+    public List<MemberUserModel> getLatelyGroupMembers() {
+        if (groupLatelyMembers == null || groupLatelyMembers.isEmpty()) {
+            // 加载简单的用户信息，返回4条，至多
+            groupLatelyMembers = GroupHelper.getMemberUsers(id, 4);
+        }
+
+        return groupLatelyMembers;
+    }
 }

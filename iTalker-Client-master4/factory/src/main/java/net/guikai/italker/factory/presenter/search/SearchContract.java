@@ -1,8 +1,8 @@
 package net.guikai.italker.factory.presenter.search;
 
-import net.guikai.italker.common.presenter.BaseContract;
 import net.guikai.italker.factory.model.card.GroupCard;
 import net.guikai.italker.factory.model.card.UserCard;
+import net.guikai.italker.factory.presenter.BaseContract;
 
 import java.util.List;
 

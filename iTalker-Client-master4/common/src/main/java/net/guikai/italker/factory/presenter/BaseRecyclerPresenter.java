@@ -2,15 +2,18 @@ package net.guikai.italker.factory.presenter;
 
 import android.support.v7.util.DiffUtil;
 
+
+
 import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
+
 import java.util.List;
 
 /**
  * 对RecyclerView进行的一个简单的Presenter封装
  *
- * @author qiujuer Email:qiujuer@live.cn
+ * @author guikai Email:guikai@live.cn
  * @version 1.0.0
  */
 public class BaseRecyclerPresenter<ViewMode, View extends BaseContract.RecyclerView>

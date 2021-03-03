@@ -1,10 +1,10 @@
 package net.guikai.italker.factory.presenter.contact;
 
-import net.guikai.italker.common.presenter.BasePresenter;
 import net.guikai.italker.factory.Factory;
 import net.guikai.italker.factory.data.helper.UserHelper;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.persistence.Account;
+import net.guikai.italker.factory.presenter.BasePresenter;
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
 

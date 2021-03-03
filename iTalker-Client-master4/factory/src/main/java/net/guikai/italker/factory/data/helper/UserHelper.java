@@ -1,4 +1,5 @@
 package net.guikai.italker.factory.data.helper;
+
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import net.guikai.italker.factory.Factory;
@@ -9,8 +10,10 @@ import net.guikai.italker.factory.model.api.user.UserUpdateModel;
 import net.guikai.italker.factory.model.card.UserCard;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.model.db.User_Table;
+import net.guikai.italker.factory.model.db.view.UserSampleModel;
 import net.guikai.italker.factory.net.Network;
 import net.guikai.italker.factory.net.RemoteService;
+import net.guikai.italker.factory.persistence.Account;
 
 import java.util.List;
 
@@ -19,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * @author qiujuer Email:qiujuer@live.cn
+ * @author guikai Email:guikai@live.cn
  * @version 1.0.0
  */
 public class UserHelper {
@@ -111,7 +114,7 @@ public class UserHelper {
     // 刷新联系人的操作，不需要Callback，直接存储到数据库，
     // 并通过数据库观察者进行通知界面更新，
     // 界面更新的时候进行对比，然后差异更新
-    public static void refreshContacts(DataSource.Callback<List<UserCard>> callback) {
+    public static void refreshContacts() {
         RemoteService service = Network.remote();
         service.userContacts()
                 .enqueue(new Callback<RspModel<List<UserCard>>>() {
@@ -192,6 +195,35 @@ public class UserHelper {
             return findFromLocal(id);
         }
         return user;
+    }
+
+    /**
+     * 获取联系人
+     */
+    public static List<User> getContact() {
+        return SQLite.select()
+                .from(User.class)
+                .where(User_Table.isFollow.eq(true))
+                .and(User_Table.id.notEq(Account.getUserId()))
+                .orderBy(User_Table.name, true)
+                .limit(100)
+                .queryList();
+    }
+
+
+    // 获取一个联系人列表，
+    // 但是是一个简单的数据的
+    public static List<UserSampleModel> getSampleContact() {
+        //"select id = ??";
+        //"select User_id = ??";
+        return SQLite.select(User_Table.id.withTable().as("id"),
+                User_Table.name.withTable().as("name"),
+                User_Table.portrait.withTable().as("portrait"))
+                .from(User.class)
+                .where(User_Table.isFollow.eq(true))
+                .and(User_Table.id.notEq(Account.getUserId()))
+                .orderBy(User_Table.name, true)
+                .queryCustomList(UserSampleModel.class);
     }
 
 }

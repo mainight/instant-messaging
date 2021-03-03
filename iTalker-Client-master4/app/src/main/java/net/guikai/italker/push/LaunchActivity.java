@@ -115,13 +115,14 @@ public class LaunchActivity extends BaseActivity {
     private void reallySkip() {
         // 权限检测，跳转
         if (PermissionsFragment.haveAll(this, getSupportFragmentManager())) {
-            if (Account.isLogin()) {
-               // AccountActivity.show(this);
-                //登录后就不在登录
-               MainActivity.show(this);
-            } else {
-                AccountActivity.show(this);
-            }
+//            if (Account.isLogin()) {
+//               // AccountActivity.show(this);
+//                //登录后就不在登录
+//               MainActivity.show(this);
+//            } else {
+//                AccountActivity.show(this);
+//            }
+            AccountActivity.show(this);
             finish();
         }
     }

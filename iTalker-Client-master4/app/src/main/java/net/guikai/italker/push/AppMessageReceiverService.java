@@ -11,6 +11,7 @@ import com.igexin.sdk.message.GTTransmitMessage;
 import net.guikai.italker.factory.Factory;
 import net.guikai.italker.factory.data.helper.AccountHelper;
 import net.guikai.italker.factory.persistence.Account;
+import net.guikai.italker.utils.LogD;
 
 /**
  * Description: 个推接收消息的IntentService，用以接收具体的消息信息
@@ -41,7 +42,9 @@ public class AppMessageReceiverService extends GTIntentService {
         byte[] payload = gtTransmitMessage.getPayload();
         if (payload != null) {
             String message = new String(payload);
+            LogD.d("收到消息"+message);
             onMessageArrived(message);
+
         }
     }
 
@@ -91,6 +94,6 @@ public class AppMessageReceiverService extends GTIntentService {
      */
     private void onMessageArrived(String message) {
         // 交给Factory处理
-//        Factory.dispatchPush(message);
+   Factory.dispatchPush(message);
     }
 }

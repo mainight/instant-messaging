@@ -8,14 +8,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+
 import net.guikai.italker.common.app.PresenterFragment;
 import net.guikai.italker.common.widget.EmptyView;
 import net.guikai.italker.common.widget.PortraitView;
 import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
+import net.guikai.italker.factory.model.db.Session;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.presenter.contact.ContactContract;
 import net.guikai.italker.factory.presenter.contact.ContactPresenter;
 import net.guikai.italker.push.R;
+import net.guikai.italker.push.activities.MessageActivity;
 import net.guikai.italker.push.activities.PersonalActivity;
 
 import butterknife.BindView;
@@ -66,7 +69,7 @@ implements ContactContract.View{
             @Override
             public void onItemClick(RecyclerAdapter.ViewHolder holder, User user) {
                 // TODO 跳转到聊天界面
-
+                MessageActivity.show(getContext(),user);
             }
         });
 

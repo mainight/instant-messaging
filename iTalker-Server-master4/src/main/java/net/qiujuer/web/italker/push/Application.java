@@ -8,14 +8,15 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//继承jersery中的基库
 
 public class Application extends ResourceConfig {
 
     private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
-
+    //写一个公用的注册函数
     public Application() {
 
-        //注册逻辑处理的包名
+        //注册逻辑处理的包名 也可以写packages（“net.qiujiu.web.italker.push.sercive”）
         packages(AccountService.class.getPackage().getName());
 
         // 注册我们的全局请求拦截器

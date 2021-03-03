@@ -2,7 +2,7 @@
 <web-app>
 
     <display-name>iTalker</display-name>
-
+    <!--对servlet的配置-->
     <servlet>
         <servlet-name>ITalkerApiServlet</servlet-name>
         <!--容器-->

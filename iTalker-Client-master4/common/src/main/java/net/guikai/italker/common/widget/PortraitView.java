@@ -5,14 +5,17 @@ import android.util.AttributeSet;
 
 import com.bumptech.glide.RequestManager;
 
+
 import net.guikai.italker.common.R;
 import net.guikai.italker.factory.model.Author;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Description: 主页ActionBar左方小头像
- * Crete by Anding on 2019-10-31
+ * 头像控件
+ *
+ * @author qiujuer Email:qiujuer@live.cn
+ * @version 1.0.0
  */
 public class PortraitView extends CircleImageView {
     public PortraitView(Context context) {
@@ -27,6 +30,7 @@ public class PortraitView extends CircleImageView {
         super(context, attrs, defStyle);
     }
 
+
     public void setup(RequestManager manager, Author author) {
         if (author == null)
             return;
@@ -34,20 +38,21 @@ public class PortraitView extends CircleImageView {
         setup(manager, author.getPortrait());
     }
 
-    public void setup(RequestManager manager,String url) {
-        setup(manager, R.drawable.default_portrait,url);
+
+    public void setup(RequestManager manager, String url) {
+        setup(manager, R.drawable.default_portrait, url);
     }
 
-    public void setup(RequestManager manager,int resourceId, String url) {
-        if (url == "" ){
+
+    public void setup(RequestManager manager, int resourceId, String url) {
+        if (url == null)
             url = "";
-        }
-//        manager.load(url)
-//                .placeholder(resourceId)
-//                .centerCrop()
-//                .dontAnimate()// CircleImageView 控件中不能使用渐变动画，会导致显示延迟
-//                .into(this);
-//
-      }
+        manager.load(url)
+                .placeholder(resourceId)
+                .centerCrop()
+                .dontAnimate() // CircleImageView 控件中不能使用渐变动画，会导致显示延迟
+                .into(this);
+
+    }
 
 }

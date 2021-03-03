@@ -1,7 +1,7 @@
 package net.guikai.italker.factory.presenter.contact;
 
-import net.guikai.italker.common.presenter.BaseContract;
 import net.guikai.italker.factory.model.db.User;
+import net.guikai.italker.factory.presenter.BaseContract;
 
 /**
  * Description:

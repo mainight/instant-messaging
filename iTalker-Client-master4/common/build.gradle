@@ -44,5 +44,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     api project(path: ':lang')
+//    compile project(path: ':factory')
 
 }

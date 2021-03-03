@@ -2,6 +2,7 @@ package net.guikai.italker.factory.data.message;
 
 import android.text.TextUtils;
 
+
 import net.guikai.italker.factory.data.helper.DbHelper;
 import net.guikai.italker.factory.data.helper.GroupHelper;
 import net.guikai.italker.factory.data.helper.MessageHelper;

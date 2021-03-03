@@ -15,32 +15,32 @@ import javax.ws.rs.core.MediaType;
  * Description: 后端入口
  * Crete by Anding on 2019-12-01
  */
-
+//实际访问路径127.0.0.1/api/account/。。。
 @Path("/account")
 public class AccountService extends BaseService {
-
     // 登录接口
     @POST
     @Path("/login")
-    // 指定请求与返回的相应体为JSON
+    // 指定请求与返回的相应体为JSON Jersey中使用@Path注解来设置资源
+    //注解Consumes告诉传入的为json，回去的时候也使用json，必须要指定返回格式，json不止可以返回json也可以返回xml格式
+    //jersey只是为了restful框架的一个轻量级框架，基本概念是可以识别get和post。即时是同一个地址，使用不同的get和post则执行不同的逻辑
+    //传入是json
     @Consumes(MediaType.APPLICATION_JSON)
+    //返回时json
     @Produces(MediaType.APPLICATION_JSON)
     public ResponseModel<AccountRspModel> login(LoginModel model) {
         if (!LoginModel.check(model)) {
             // 返回参数异常
             return ResponseModel.buildParameterError();
         }
-
         // 登录逻辑操作 数据库查询
         User user = UserFactory.login(model.getAccount(), model.getPassword());
-
         if (user != null) {
             //如果有携带PushId 需要将id绑定到用户信息中 为后续推送添加标识
             if (!Strings.isNullOrEmpty(model.getPushId())) {
                 // 绑定PushId
                 return bind(user, model.getPushId());
             }
-
             //返回当前的账户
             AccountRspModel rspModel = new AccountRspModel(user);
             return ResponseModel.buildOk(rspModel);

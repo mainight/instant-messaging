@@ -1,4 +1,6 @@
 package net.guikai.italker.factory.model.api;
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import net.guikai.italker.factory.Factory;
@@ -77,12 +79,13 @@ public class PushModel {
         public String content;
         // 消息生成时间
         public Date createAt;
-    }
-
     @Override
     public String toString() {
-        return "PushModel{" +
-                "entities=" + entities +
+        return "Entity{" +
+                "type=" + type +
+                ", content='" + content + '\'' +
+                ", createAt=" + createAt +
                 '}';
+    }
     }
 }

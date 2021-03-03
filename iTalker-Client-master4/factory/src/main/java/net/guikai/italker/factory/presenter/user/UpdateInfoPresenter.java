@@ -2,7 +2,6 @@ package net.guikai.italker.factory.presenter.user;
 
 import android.text.TextUtils;
 
-import net.guikai.italker.common.presenter.BasePresenter;
 import net.guikai.italker.factory.Factory;
 import net.guikai.italker.factory.R;
 import net.guikai.italker.factory.data.DataSource;
@@ -11,6 +10,7 @@ import net.guikai.italker.factory.model.api.user.UserUpdateModel;
 import net.guikai.italker.factory.model.card.UserCard;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.net.UploadHelper;
+import net.guikai.italker.factory.presenter.BasePresenter;
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
 

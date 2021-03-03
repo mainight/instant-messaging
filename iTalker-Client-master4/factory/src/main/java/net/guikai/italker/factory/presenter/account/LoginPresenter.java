@@ -3,13 +3,13 @@ package net.guikai.italker.factory.presenter.account;
 import android.text.TextUtils;
 
 import net.guikai.italker.common.Common;
-import net.guikai.italker.common.presenter.BasePresenter;
 import net.guikai.italker.factory.R;
 import net.guikai.italker.factory.data.DataSource;
 import net.guikai.italker.factory.data.helper.AccountHelper;
 import net.guikai.italker.factory.model.api.account.LoginModel;
 import net.guikai.italker.factory.model.db.User;
 import net.guikai.italker.factory.persistence.Account;
+import net.guikai.italker.factory.presenter.BasePresenter;
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
 

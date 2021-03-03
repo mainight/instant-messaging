@@ -68,6 +68,13 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".activities.MessageActivity"
+            android:label="@string/title_activity_message"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Message"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.SearchActivity"
             android:label="@string/title_search"

@@ -2,7 +2,10 @@ package net.guikai.italker.factory.presenter;
 
 import android.support.annotation.StringRes;
 
+
+
 import net.guikai.italker.common.widget.recycler.RecyclerAdapter;
+
 
 /**
  * MVP模式中公共的基本契约

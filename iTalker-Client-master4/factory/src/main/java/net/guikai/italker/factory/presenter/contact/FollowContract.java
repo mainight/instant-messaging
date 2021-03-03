@@ -1,7 +1,7 @@
 package net.guikai.italker.factory.presenter.contact;
 
-import net.guikai.italker.common.presenter.BaseContract;
 import net.guikai.italker.factory.model.card.UserCard;
+import net.guikai.italker.factory.presenter.BaseContract;
 
 /**
  * Description: 关注联系人契约定义
